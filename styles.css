@@ -481,6 +481,7 @@ body.blog-page .blog-hero {
 
 .panel-grid.three-col {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
 }
 
 .panel-grid.two-col {
@@ -505,6 +506,11 @@ body.blog-page .blog-hero {
   padding: 0;
   display: grid;
   gap: 14px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
 }
 
 .stat-list li {
