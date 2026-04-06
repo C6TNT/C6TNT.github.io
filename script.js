@@ -12,7 +12,15 @@ const revealObserver = new IntersectionObserver(
   }
 );
 
-document.querySelectorAll(".reveal").forEach((element) => {
+const revealElements = document.querySelectorAll(".reveal");
+
+if (document.body.classList.contains("blog-page")) {
+  document.querySelectorAll(".blog-hero, .archive-shell").forEach((element) => {
+    element.classList.add("is-visible");
+  });
+}
+
+revealElements.forEach((element) => {
   revealObserver.observe(element);
 });
 
