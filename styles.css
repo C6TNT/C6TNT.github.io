@@ -420,6 +420,25 @@ body.blog-page .archive-shell {
   padding: 34px 0;
 }
 
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+  color: var(--muted);
+}
+
+.scroll-hint p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.scroll-hint-line {
+  width: 56px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+}
+
 .section-head {
   display: flex;
   justify-content: space-between;
