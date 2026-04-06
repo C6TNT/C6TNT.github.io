@@ -447,7 +447,7 @@ body.blog-page .blog-hero {
 }
 
 .section-head-tight {
-  align-items: center;
+  align-items: start;
 }
 
 .section-head h2 {
@@ -506,18 +506,20 @@ body.blog-page .blog-hero {
   padding: 0;
   display: grid;
   gap: 14px;
+  width: min(100%, 540px);
 }
 
 .stat-card {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .stat-list li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 28px;
   padding-bottom: 12px;
   border-bottom: 1px dashed rgba(98, 243, 255, 0.2);
 }
@@ -530,6 +532,12 @@ body.blog-page .blog-hero {
 .stat-list strong {
   color: var(--primary);
   font-family: "IBM Plex Mono", monospace;
+  min-width: 56px;
+}
+
+.stat-list span {
+  flex: 1;
+  text-align: right;
 }
 
 .project-shell,
