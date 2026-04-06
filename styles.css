@@ -137,6 +137,12 @@ a {
   transform: translateY(0);
 }
 
+body.blog-page .blog-hero,
+body.blog-page .archive-shell {
+  opacity: 1;
+  transform: none;
+}
+
 .delay-1 {
   transition-delay: 0.14s;
 }
