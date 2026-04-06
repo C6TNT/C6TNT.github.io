@@ -3,138 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>C6TNT | Personal Site</title>
-  <meta name="description" content="C6TNT 的个人主页、作品集与博客。">
+  <title>C6TNT | Hacker Portfolio</title>
+  <meta name="description" content="C6TNT 的开发者主页、项目展示与博客。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="page-noise"></div>
+  <div class="grid-backdrop"></div>
   <div class="site-shell">
     <header class="topbar">
       <a class="brand" href="#hero">C6TNT</a>
       <nav class="nav">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#writing">Writing</a>
-        <a href="#contact">Contact</a>
+        <a href="#about">about</a>
+        <a href="#projects">projects</a>
+        <a href="#writing">writing</a>
+        <a href="#contact">contact</a>
       </nav>
-      <a class="topbar-link" href="blog.html">Blog</a>
+      <a class="topbar-link" href="blog.html">/blog</a>
     </header>
 
     <main>
       <section class="hero reveal" id="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">PERSONAL SITE / PROJECTS / BLOG</p>
-          <h1>让作品、文章和个人表达出现在同一套清晰的界面里。</h1>
-          <p class="hero-text">
-            我是 <strong>C6TNT</strong>。这里不是一张静态名片，而是一个持续更新的个人工作台:
-            展示我在做的项目、记录构建过程，也把思考和文章整理成可以长期阅读的内容。
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#projects">查看作品</a>
-            <a class="button button-secondary" href="blog.html">阅读博客</a>
+        <div class="editor-window">
+          <div class="window-bar">
+            <div class="window-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="window-title">portfolio.tsx</div>
+          </div>
+          <div class="editor-layout">
+            <aside class="editor-sidebar">
+              <span>intro.ts</span>
+              <span>projects.json</span>
+              <span>blog.md</span>
+              <span>contact.yml</span>
+            </aside>
+            <div class="editor-content">
+              <p class="eyebrow">DEVELOPER HOMEPAGE / HACKER STYLE</p>
+              <h1>像一个正在运行的开发者工作台，而不是普通个人主页。</h1>
+              <p class="hero-text">
+                我是 <strong>C6TNT</strong>。这里用更偏开发者和黑客风的视觉语言来展示作品、文章和在线身份:
+                编辑器布局、终端面板、代码感排版和冷色霓虹，让这个站更像我的工作环境本身。
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#projects">run projects</a>
+                <a class="button button-secondary" href="blog.html">open blog</a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <aside class="hero-panel reveal delay-1">
-          <div class="hero-panel-head">
-            <span class="panel-dot"></span>
-            <span class="panel-dot"></span>
-            <span class="panel-dot"></span>
+        <aside class="terminal-card reveal delay-1">
+          <div class="window-bar">
+            <div class="window-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="window-title">terminal</div>
           </div>
-          <div class="hero-panel-body">
-            <div class="identity-block">
-              <div class="identity-avatar">C6</div>
-              <div>
-                <p class="panel-label">Identity</p>
-                <h2>C6TNT</h2>
-                <p class="panel-text">Builder / Frontend / Notes</p>
-              </div>
-            </div>
-            <dl class="system-grid">
-              <div>
-                <dt>Status</dt>
-                <dd>Online</dd>
-              </div>
-              <div>
-                <dt>Deploy</dt>
-                <dd>GitHub Pages</dd>
-              </div>
-              <div>
-                <dt>Theme</dt>
-                <dd>Blue System</dd>
-              </div>
-              <div>
-                <dt>Focus</dt>
-                <dd>Portfolio + Blog</dd>
-              </div>
-            </dl>
-            <div class="signal-stack">
-              <span>Responsive</span>
-              <span>Static</span>
-              <span>Lightweight</span>
-            </div>
+          <div class="terminal-body">
+            <p><span class="prompt">visitor@c6tnt:~$</span> whoami</p>
+            <p class="terminal-output">Frontend builder / portfolio tinkerer / notes collector</p>
+            <p><span class="prompt">visitor@c6tnt:~$</span> ls focus/</p>
+            <ul class="terminal-list">
+              <li>responsive-interfaces</li>
+              <li>github-pages-sites</li>
+              <li>developer-writing</li>
+            </ul>
+            <p><span class="prompt">visitor@c6tnt:~$</span> status</p>
+            <p class="terminal-output">online :: shipping static things that feel alive</p>
           </div>
         </aside>
       </section>
 
-      <section class="overview reveal">
-        <article class="overview-card">
-          <p class="card-kicker">01 / Quick Intro</p>
-          <h2>适合长期维护的个人主页结构</h2>
-          <p>
-            首页先建立个人印象，再把项目和文章拆开管理。你后续无论是继续扩展作品、补博客，
-            还是改成更正式的个人品牌站，这种结构都更稳。
-          </p>
-        </article>
-        <article class="overview-card">
-          <p class="card-kicker">02 / Current Stack</p>
-          <h2>纯静态文件，上传就能跑</h2>
-          <p>
-            这一版继续保持 HTML、CSS、JavaScript 的纯静态方案，不依赖本地构建工具，
-            非常适合 `username.github.io` 的直接部署方式。
-          </p>
-        </article>
-        <article class="overview-card">
-          <p class="card-kicker">03 / Content Flow</p>
-          <h2>作品和博客各自有入口</h2>
-          <p>
-            项目展示强调成果与链接，博客入口强调持续更新感，比“全堆在首页”更像成熟站点。
-          </p>
-        </article>
+      <section class="signal-strip reveal">
+        <div class="signal-box">
+          <span class="signal-label">stack</span>
+          <strong>html / css / js</strong>
+        </div>
+        <div class="signal-box">
+          <span class="signal-label">deploy</span>
+          <strong>github pages</strong>
+        </div>
+        <div class="signal-box">
+          <span class="signal-label">mode</span>
+          <strong>editor + terminal</strong>
+        </div>
+        <div class="signal-box">
+          <span class="signal-label">status</span>
+          <strong>public build</strong>
+        </div>
       </section>
 
       <section class="section reveal" id="about">
         <div class="section-head">
           <p class="eyebrow">ABOUT</p>
-          <h2>个人介绍</h2>
+          <h2>开发者介绍</h2>
         </div>
-        <div class="about-layout">
-          <article class="content-card">
-            <p class="card-kicker">Profile</p>
-            <h3>我更在意一个页面是否真的值得停留</h3>
-            <p>
-              相比快速堆出一个“能用”的主页，我更在意它是否易读、是否有层次、
-              是否能让访客快速知道你是谁、做过什么、接下来还能看什么。
-            </p>
+        <div class="panel-grid three-col">
+          <article class="panel-card">
+            <p class="card-kicker">identity.ts</p>
+            <h3>更像一个构建现场</h3>
+            <p>我想让个人主页不只是展示信息，而是让访客感受到我平时如何组织项目、界面和内容。</p>
           </article>
-          <article class="content-card">
-            <p class="card-kicker">Working Style</p>
-            <h3>把项目、界面和文字一起整理清楚</h3>
-            <p>
-              这个站会持续承载三个部分: 个人主页、作品集和博客。它既是展示窗口，
-              也是一个逐步积累内容的个人档案馆。
-            </p>
+          <article class="panel-card">
+            <p class="card-kicker">philosophy.md</p>
+            <h3>清晰结构 + 强烈风格</h3>
+            <p>开发者风并不意味着页面粗糙。真正好看的黑客风，应该同时有秩序、可读性和辨识度。</p>
           </article>
-          <article class="content-card stats-card">
-            <p class="card-kicker">Snapshot</p>
-            <ul class="stats-list">
-              <li><strong>01</strong><span>个人主页</span></li>
-              <li><strong>02</strong><span>项目归档</span></li>
-              <li><strong>03</strong><span>博客更新</span></li>
+          <article class="panel-card stat-card">
+            <p class="card-kicker">snapshot.json</p>
+            <ul class="stat-list">
+              <li><strong>01</strong><span>主页</span></li>
+              <li><strong>02</strong><span>项目</span></li>
+              <li><strong>03</strong><span>博客</span></li>
             </ul>
           </article>
         </div>
@@ -145,45 +132,42 @@
           <p class="eyebrow">PROJECTS</p>
           <h2>项目展示</h2>
         </div>
-        <div class="project-layout">
-          <article class="feature-project">
-            <p class="card-kicker">Featured Project</p>
-            <h3>Signal Frame</h3>
-            <p>
-              一个为个人品牌与开发者主页设计的展示型站点方案，强调结构清晰、首屏辨识度、
-              轻量部署和移动端阅读体验。
-            </p>
-            <div class="project-tags">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>GitHub Pages</span>
+        <div class="project-shell">
+          <article class="feature-panel">
+            <p class="card-kicker">featured.build</p>
+            <h3>Signal Console</h3>
+            <p>一个为开发者个人站设计的黑客风首页方案，结合编辑器分栏、终端信息块和高对比视觉层次。</p>
+            <div class="tag-row">
+              <span>portfolio</span>
+              <span>terminal ui</span>
+              <span>github pages</span>
             </div>
-            <a class="inline-link" href="https://github.com/C6TNT" target="_blank" rel="noreferrer">查看 GitHub</a>
+            <a class="inline-link" href="https://github.com/C6TNT" target="_blank" rel="noreferrer">open repository</a>
           </article>
-          <div class="project-grid">
-            <article class="project-card">
-              <p class="card-kicker">Project 01</p>
-              <h3>Portfolio Atlas</h3>
-              <p>把项目案例拆分成更清楚的卡片与详情结构，适合持续补充作品。</p>
-              <a class="inline-link" href="https://github.com/C6TNT" target="_blank" rel="noreferrer">Repository</a>
+          <div class="panel-grid two-col">
+            <article class="panel-card">
+              <p class="card-kicker">project_01</p>
+              <h3>Blue Stack</h3>
+              <p>强调内容层级和霓虹线条的展示页，适合产品说明和个人品牌场景。</p>
+              <a class="inline-link" href="https://github.com/C6TNT" target="_blank" rel="noreferrer">view code</a>
             </article>
-            <article class="project-card">
-              <p class="card-kicker">Project 02</p>
-              <h3>Blue Notes</h3>
-              <p>围绕博客和构建日志设计的静态内容页面，适合发布技术文章与复盘。</p>
-              <a class="inline-link" href="blog.html">Open Blog</a>
+            <article class="panel-card">
+              <p class="card-kicker">project_02</p>
+              <h3>Notes Archive</h3>
+              <p>博客归档页原型，把文章做成更像开发日志而不是营销卡片的样子。</p>
+              <a class="inline-link" href="blog.html">read posts</a>
             </article>
-            <article class="project-card">
-              <p class="card-kicker">Project 03</p>
-              <h3>UI Motion Drafts</h3>
-              <p>轻量滚动动画和渐进显示效果，用很少的脚本提升页面完成度。</p>
-              <a class="inline-link" href="https://github.com/C6TNT" target="_blank" rel="noreferrer">View Code</a>
+            <article class="panel-card">
+              <p class="card-kicker">project_03</p>
+              <h3>Motion Layer</h3>
+              <p>用少量滚动显现和窗口式布局增强页面完成度，同时保持纯静态站点的轻量。</p>
+              <a class="inline-link" href="https://github.com/C6TNT" target="_blank" rel="noreferrer">see details</a>
             </article>
-            <article class="project-card">
-              <p class="card-kicker">Project 04</p>
-              <h3>Static Deploy Kit</h3>
-              <p>专门为 GitHub Pages 这种零构建部署场景准备的基础模板与说明。</p>
-              <a class="inline-link" href="README.md">Read Setup</a>
+            <article class="panel-card">
+              <p class="card-kicker">project_04</p>
+              <h3>Deploy Kit</h3>
+              <p>针对 `username.github.io` 场景整理的最简上线方式，适合快速发布个人网站。</p>
+              <a class="inline-link" href="README.md">open readme</a>
             </article>
           </div>
         </div>
@@ -192,71 +176,62 @@
       <section class="section reveal" id="writing">
         <div class="section-head">
           <p class="eyebrow">WRITING</p>
-          <h2>博客入口</h2>
+          <h2>写作与日志</h2>
         </div>
-        <div class="writing-layout">
-          <article class="writing-intro content-card">
-            <p class="card-kicker">Latest Notes</p>
-            <h3>不是附属模块，而是正式内容区</h3>
-            <p>
-              我把博客单独做成一页，首页只展示最近文章入口。这样你以后写的内容会更像一个真正的归档系统，
-              而不是零散卡片。
-            </p>
-            <a class="button button-secondary" href="blog.html">进入博客页</a>
+        <div class="writing-shell">
+          <article class="terminal-log">
+            <div class="window-bar">
+              <div class="window-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="window-title">posts.log</div>
+            </div>
+            <div class="terminal-body">
+              <p><span class="prompt">cat</span> latest_posts.txt</p>
+              <p class="terminal-output">[2026.04] 为什么开发者主页应该像工作台而不是简历页</p>
+              <p class="terminal-output">[2026.04] 用 GitHub Pages 做个人站的真实优势</p>
+              <p class="terminal-output">[2026.03] 终端风和编辑器风为什么天然适合作品集</p>
+              <a class="inline-link" href="blog.html">open full archive</a>
+            </div>
           </article>
-          <div class="writing-list">
-            <article class="writing-item">
-              <span class="writing-date">2026.04</span>
-              <div>
-                <h3>个人主页为什么要把项目和博客拆开</h3>
-                <p>更符合浏览习惯，也更适合长期维护与更新。</p>
-              </div>
-            </article>
-            <article class="writing-item">
-              <span class="writing-date">2026.04</span>
-              <div>
-                <h3>静态网站如何做出更成熟的层次感</h3>
-                <p>通过信息密度、留白和局部动效，让页面显得更完整。</p>
-              </div>
-            </article>
-            <article class="writing-item">
-              <span class="writing-date">2026.03</span>
-              <div>
-                <h3>GitHub Pages 最适合哪类个人站</h3>
-                <p>轻量、稳定、无需服务器，非常适合作品集和博客结合的场景。</p>
-              </div>
-            </article>
-          </div>
+          <article class="panel-card writing-card">
+            <p class="card-kicker">blog.md</p>
+            <h3>博客是主内容，不是附属装饰</h3>
+            <p>我把博客独立成一页，让这个站后面可以自然扩展成文章归档、开发日志和项目复盘空间。</p>
+            <a class="button button-secondary" href="blog.html">go to archive</a>
+          </article>
         </div>
       </section>
 
       <section class="section reveal" id="contact">
         <div class="section-head">
           <p class="eyebrow">CONTACT</p>
-          <h2>联系方式</h2>
+          <h2>联系我</h2>
         </div>
-        <div class="contact-layout">
-          <article class="contact-card">
-            <p class="card-kicker">GitHub</p>
-            <a href="https://github.com/C6TNT" target="_blank" rel="noreferrer">@C6TNT</a>
+        <div class="panel-grid three-col">
+          <article class="panel-card">
+            <p class="card-kicker">github</p>
+            <a class="contact-link" href="https://github.com/C6TNT" target="_blank" rel="noreferrer">@C6TNT</a>
           </article>
-          <article class="contact-card">
-            <p class="card-kicker">Email</p>
-            <a href="mailto:hello@c6tnt.dev">hello@c6tnt.dev</a>
+          <article class="panel-card">
+            <p class="card-kicker">email</p>
+            <a class="contact-link" href="mailto:hello@c6tnt.dev">hello@c6tnt.dev</a>
           </article>
-          <article class="contact-card">
-            <p class="card-kicker">Collab</p>
-            <p>欢迎联系我聊网站、项目展示页、前端界面和内容表达。</p>
+          <article class="panel-card">
+            <p class="card-kicker">message</p>
+            <p>欢迎来聊项目、页面改版、开发者主页、展示型网站和内容表达。</p>
           </article>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>© 2026 C6TNT. Designed for GitHub Pages.</p>
+      <p>© 2026 C6TNT // public terminal build</p>
       <div class="footer-links">
-        <a href="blog.html">Blog</a>
-        <a href="https://github.com/C6TNT" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="blog.html">blog</a>
+        <a href="https://github.com/C6TNT" target="_blank" rel="noreferrer">github</a>
       </div>
     </footer>
   </div>

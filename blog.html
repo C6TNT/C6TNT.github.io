@@ -3,79 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>C6TNT | Blog</title>
-  <meta name="description" content="C6TNT 的博客与构建记录。">
+  <title>C6TNT | Blog Archive</title>
+  <meta name="description" content="C6TNT 的博客归档页。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="blog-page">
-  <div class="page-noise"></div>
+  <div class="grid-backdrop"></div>
   <div class="site-shell">
     <header class="topbar">
       <a class="brand" href="index.html">C6TNT</a>
       <nav class="nav">
-        <a href="index.html#about">About</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="blog.html">Blog</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="index.html#about">about</a>
+        <a href="index.html#projects">projects</a>
+        <a href="blog.html">writing</a>
+        <a href="index.html#contact">contact</a>
       </nav>
-      <a class="topbar-link" href="index.html">Home</a>
+      <a class="topbar-link" href="index.html">/home</a>
     </header>
 
     <main class="blog-main">
       <section class="blog-hero reveal">
-        <p class="eyebrow">WRITING ARCHIVE</p>
-        <h1>博客档案馆</h1>
-        <p class="hero-text">
-          这里放文章、开发记录、设计思考和项目复盘。现在是静态示例结构，
-          之后可以继续扩展成 Markdown 驱动的博客系统。
-        </p>
+        <div class="editor-window">
+          <div class="window-bar">
+            <div class="window-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="window-title">archive.md</div>
+          </div>
+          <div class="editor-content editor-content-wide">
+            <p class="eyebrow">WRITING ARCHIVE</p>
+            <h1>开发日志、页面思考和项目复盘。</h1>
+            <p class="hero-text">这里是博客页，风格继续沿用编辑器与终端组合，让内容看起来更像真实的工作记录。</p>
+          </div>
+        </div>
       </section>
 
-      <section class="archive-grid reveal delay-1">
-        <article class="archive-feature">
-          <p class="card-kicker">Featured Post</p>
-          <h2>从模板感主页到真正可持续更新的个人站</h2>
-          <p>
-            这篇内容会讲如何从“一个看起来不错的首页”过渡到“一个能长期维护的个人网站系统”，
-            包括项目、文章和联系方式应该怎么拆分。
-          </p>
-          <div class="project-tags">
-            <span>Structure</span>
-            <span>Personal Brand</span>
-            <span>Static Site</span>
+      <section class="archive-shell reveal delay-1">
+        <article class="feature-panel">
+          <p class="card-kicker">featured.post</p>
+          <h3>从普通模板到开发者风个人站的重构过程</h3>
+          <p>记录如何把一个常规作品集页面，改造成更有代码感、终端感和持续更新气质的个人主页。</p>
+          <div class="tag-row">
+            <span>ui systems</span>
+            <span>developer style</span>
+            <span>static site</span>
           </div>
         </article>
-
         <div class="archive-list">
-          <article class="archive-item">
+          <article class="panel-card archive-item">
             <span class="writing-date">2026.04</span>
             <div>
-              <h3>为什么 GitHub Pages 很适合个人作品集</h3>
-              <p>部署简单、成本低、足够稳定，特别适合个人主页与展示型网站。</p>
+              <h3>为什么编辑器布局适合开发者主页</h3>
+              <p>它天然带有工作中的视觉语境，比传统英雄区更有身份感。</p>
             </div>
           </article>
-          <article class="archive-item">
+          <article class="panel-card archive-item">
             <span class="writing-date">2026.04</span>
             <div>
-              <h3>浅蓝科技感网页怎么做得更克制</h3>
-              <p>重点不在于加多少发光，而在于信息密度、留白和层次控制。</p>
+              <h3>GitHub Pages 也能做出不模板化的个人站</h3>
+              <p>关键不是技术栈多复杂，而是结构、排版和视觉语言是否有自己的判断。</p>
             </div>
           </article>
-          <article class="archive-item">
+          <article class="panel-card archive-item">
             <span class="writing-date">2026.03</span>
             <div>
-              <h3>项目页文案应该怎么写才不像简历</h3>
-              <p>少写空泛标签，多写背景、目标、技术选择和结果。</p>
+              <h3>终端风页面最容易踩的三个坑</h3>
+              <p>过暗、过密、过度模拟，都会让页面从酷变成难用。</p>
             </div>
           </article>
-          <article class="archive-item">
+          <article class="panel-card archive-item">
             <span class="writing-date">2026.03</span>
             <div>
-              <h3>轻量动效对个人主页的价值</h3>
-              <p>只做少量但明确的进入动画，比堆砌效果更耐看。</p>
+              <h3>写项目介绍时，怎样避免“流水账感”</h3>
+              <p>把项目背景、目标和结果写出来，比堆技术名词更有说服力。</p>
             </div>
           </article>
         </div>
@@ -83,10 +88,10 @@
     </main>
 
     <footer class="footer">
-      <p>持续更新中。下一步可以接 Markdown 博客。</p>
+      <p>archive online // more posts coming soon</p>
       <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="https://github.com/C6TNT" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="index.html">home</a>
+        <a href="https://github.com/C6TNT" target="_blank" rel="noreferrer">github</a>
       </div>
     </footer>
   </div>
