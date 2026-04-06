@@ -546,10 +546,20 @@ a {
 
 .filter-grid {
   align-items: stretch;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .filter-grid .project-item {
   min-height: 100%;
+}
+
+.feature-panel {
+  min-height: auto;
+}
+
+.project-more-card {
+  background:
+    linear-gradient(180deg, rgba(11, 28, 44, 0.92), rgba(8, 20, 31, 0.9));
 }
 
 .tag-row span {
