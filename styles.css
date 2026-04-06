@@ -309,6 +309,17 @@ a {
   margin: 0 0 12px;
 }
 
+.profile-avatar {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  display: block;
+  margin: 0 0 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(98, 243, 255, 0.22);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+}
+
 .prompt {
   color: var(--success);
 }
