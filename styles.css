@@ -152,7 +152,7 @@ body.blog-page .blog-hero {
   gap: 18px;
   align-items: stretch;
   min-height: calc(100vh - 130px);
-  padding: 34px 0 20px;
+  padding: 30px 0 12px;
 }
 
 .window-bar {
@@ -257,9 +257,9 @@ body.blog-page .blog-hero {
 .blog-hero h1 {
   margin: 0;
   max-width: 860px;
-  font-size: clamp(2.2rem, 4.2vw, 4rem);
-  line-height: 1.12;
-  letter-spacing: -0.035em;
+  font-size: clamp(1.95rem, 3.75vw, 3.45rem);
+  line-height: 1.16;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
@@ -281,17 +281,17 @@ body.blog-page .blog-hero {
 }
 
 .hero-text {
-  max-width: 680px;
-  margin: 22px 0 0;
-  font-size: 1rem;
-  line-height: 1.9;
+  max-width: 620px;
+  margin: 18px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.85;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: 24px;
 }
 
 .button {
@@ -711,8 +711,8 @@ body.blog-page .blog-hero {
   .hero h1,
   .blog-hero h1 {
     max-width: none;
-    font-size: clamp(2.15rem, 10.5vw, 3.35rem);
-    line-height: 1.08;
+    font-size: clamp(1.95rem, 9vw, 3rem);
+    line-height: 1.12;
   }
 
   .section-head,
