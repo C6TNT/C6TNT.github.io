@@ -276,9 +276,10 @@ a {
 }
 
 .hero-text {
-  max-width: 720px;
+  max-width: 680px;
   margin: 22px 0 0;
-  font-size: 1.04rem;
+  font-size: 1rem;
+  line-height: 1.9;
 }
 
 .hero-actions {
