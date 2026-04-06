@@ -25,7 +25,7 @@ body {
   margin: 0;
   min-height: 100vh;
   color: var(--text);
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBM Plex Sans SC", sans-serif;
   background:
     radial-gradient(circle at top left, rgba(70, 163, 255, 0.16), transparent 22%),
     radial-gradient(circle at 85% 8%, rgba(98, 243, 255, 0.1), transparent 18%),
@@ -87,7 +87,9 @@ a {
 .nav a,
 .topbar-link,
 .signal-label,
-.writing-date {
+.writing-date,
+.status-bar span,
+.filter-chip {
   font-family: "IBM Plex Mono", monospace;
 }
 
@@ -109,7 +111,6 @@ a {
 .topbar-link {
   color: var(--muted);
   font-size: 0.92rem;
-  text-transform: lowercase;
   transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
@@ -188,20 +189,31 @@ a {
 
 .editor-layout {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 160px 1fr;
   min-height: 520px;
 }
 
 .editor-sidebar {
   display: grid;
   align-content: start;
-  gap: 12px;
+  gap: 10px;
   padding: 18px 14px;
   background: rgba(4, 13, 22, 0.88);
   border-right: 1px solid var(--line);
   color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
+}
+
+.editor-sidebar span {
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.editor-sidebar .is-active {
+  color: var(--text);
+  background: rgba(98, 243, 255, 0.08);
+  border: 1px solid rgba(98, 243, 255, 0.16);
 }
 
 .editor-content,
@@ -211,6 +223,20 @@ a {
 
 .editor-content-wide {
   min-height: 280px;
+}
+
+.status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--line);
+  background: rgba(4, 13, 22, 0.86);
+}
+
+.status-bar span {
+  color: var(--muted);
+  font-size: 0.78rem;
 }
 
 .eyebrow,
@@ -234,7 +260,8 @@ a {
 .panel-card p,
 .feature-panel p,
 .terminal-output,
-.archive-item p {
+.archive-item p,
+.project-item p {
   color: var(--muted);
   line-height: 1.84;
 }
@@ -293,6 +320,13 @@ a {
   color: var(--muted);
 }
 
+.type-target::after {
+  content: "_";
+  margin-left: 4px;
+  color: var(--primary);
+  animation: blink 1s steps(1) infinite;
+}
+
 .signal-strip,
 .panel-grid,
 .project-shell,
@@ -314,7 +348,6 @@ a {
 .signal-box strong {
   display: block;
   font-size: 1rem;
-  text-transform: lowercase;
 }
 
 .section,
@@ -331,10 +364,37 @@ a {
   margin-bottom: 18px;
 }
 
+.section-head-tight {
+  align-items: center;
+}
+
 .section-head h2 {
   margin: 0;
   font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: -0.04em;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  border: 1px solid var(--line);
+  background: rgba(8, 20, 31, 0.92);
+  color: var(--muted);
+  padding: 9px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.filter-chip.is-active,
+.filter-chip:hover {
+  color: var(--bg);
+  background: linear-gradient(135deg, var(--primary), var(--success));
+  border-color: transparent;
 }
 
 .panel-grid.three-col {
@@ -403,7 +463,10 @@ a {
   background: rgba(98, 243, 255, 0.08);
   color: var(--primary);
   font-size: 0.84rem;
-  text-transform: lowercase;
+}
+
+.project-item.is-hidden {
+  display: none;
 }
 
 .inline-link,
@@ -458,6 +521,12 @@ a {
   padding-top: 36px;
 }
 
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 @media (max-width: 980px) {
   .hero,
   .signal-strip,
@@ -490,9 +559,15 @@ a {
     font-size: clamp(2.3rem, 13vw, 3.8rem);
   }
 
+  .section-head,
+  .section-head-tight,
   .footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .status-bar {
+    gap: 10px;
   }
 }
 
