@@ -456,6 +456,19 @@ body.blog-page .blog-hero {
   align-items: start;
 }
 
+#projects .section-head {
+  align-items: start;
+  margin-top: -6px;
+}
+
+#projects .section-head .eyebrow {
+  margin-bottom: 0;
+}
+
+#projects .section-head h2 {
+  text-align: right;
+}
+
 .section-head h2 {
   margin: 0;
   font-size: clamp(2rem, 4vw, 3rem);
