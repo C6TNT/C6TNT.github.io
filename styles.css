@@ -504,7 +504,7 @@ a {
 
 .project-shell,
 .archive-shell {
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr;
   align-items: start;
 }
 
@@ -515,10 +515,17 @@ a {
   margin: 22px 0 18px;
 }
 
+.feature-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: 24px;
+  align-items: start;
+}
+
 .feature-notes {
   display: grid;
   gap: 10px;
-  margin: 10px 0 20px;
+  margin: 22px 0 0;
 }
 
 .feature-notes p {
@@ -535,6 +542,14 @@ a {
   display: flex;
   gap: 18px;
   flex-wrap: wrap;
+}
+
+.filter-grid {
+  align-items: stretch;
+}
+
+.filter-grid .project-item {
+  min-height: 100%;
 }
 
 .tag-row span {
@@ -622,6 +637,11 @@ a {
   .writing-shell,
   .archive-shell {
     grid-template-columns: 1fr;
+  }
+
+  .feature-layout {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 }
 
