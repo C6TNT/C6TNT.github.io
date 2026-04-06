@@ -330,15 +330,41 @@ a {
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
 }
 
+.info-panel-body {
+  display: grid;
+  gap: 18px;
+}
+
+.info-group {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed rgba(98, 243, 255, 0.14);
+}
+
+.info-group:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.info-label {
+  color: var(--primary);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
 .prompt {
   color: var(--success);
 }
 
 .terminal-list {
   list-style: none;
-  margin: 0 0 12px;
-  padding: 0 0 0 16px;
+  margin: 0;
+  padding: 0;
   color: var(--muted);
+  display: grid;
+  gap: 8px;
 }
 
 .type-target::after {
