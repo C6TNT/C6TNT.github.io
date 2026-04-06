@@ -251,17 +251,18 @@ a {
 .hero h1,
 .blog-hero h1 {
   margin: 0;
-  max-width: 900px;
-  font-size: clamp(2.45rem, 4.9vw, 4.6rem);
-  line-height: 1.06;
-  letter-spacing: -0.045em;
+  max-width: 860px;
+  font-size: clamp(2.2rem, 4.2vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
 }
 
 .blog-hero h1 {
-  max-width: 980px;
-  font-size: clamp(2.2rem, 4.2vw, 3.9rem);
-  line-height: 1.1;
-  letter-spacing: -0.035em;
+  max-width: 900px;
+  font-size: clamp(2rem, 3.7vw, 3.45rem);
+  line-height: 1.14;
+  letter-spacing: -0.03em;
 }
 
 .hero-text,
