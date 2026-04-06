@@ -137,8 +137,7 @@ a {
   transform: translateY(0);
 }
 
-body.blog-page .blog-hero,
-body.blog-page .archive-shell {
+body.blog-page .blog-hero {
   opacity: 1;
   transform: none;
 }

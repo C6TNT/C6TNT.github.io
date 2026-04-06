@@ -15,7 +15,7 @@ const revealObserver = new IntersectionObserver(
 const revealElements = document.querySelectorAll(".reveal");
 
 if (document.body.classList.contains("blog-page")) {
-  document.querySelectorAll(".blog-hero, .archive-shell").forEach((element) => {
+  document.querySelectorAll(".blog-hero").forEach((element) => {
     element.classList.add("is-visible");
   });
 }
