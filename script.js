@@ -69,3 +69,21 @@ filterButtons.forEach((button) => {
     });
   });
 });
+
+const articleFilterButtons = document.querySelectorAll("[data-article-filter]");
+const articleItems = document.querySelectorAll(".article-item");
+
+articleFilterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.articleFilter ?? "all";
+
+    articleFilterButtons.forEach((item) => item.classList.remove("is-active"));
+    button.classList.add("is-active");
+
+    articleItems.forEach((card) => {
+      const categories = (card.dataset.articleCategory ?? "").split(" ");
+      const visible = filter === "all" || categories.includes(filter);
+      card.classList.toggle("is-hidden", !visible);
+    });
+  });
+});

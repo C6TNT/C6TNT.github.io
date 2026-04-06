@@ -357,6 +357,11 @@ a {
   gap: 18px;
 }
 
+.archive-column {
+  display: grid;
+  gap: 16px;
+}
+
 .signal-strip {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   padding: 12px 0 20px;
@@ -487,6 +492,10 @@ a {
 }
 
 .project-item.is-hidden {
+  display: none;
+}
+
+.article-item.is-hidden {
   display: none;
 }
 
