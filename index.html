@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C6TNT | Portfolio & Blog</title>
+  <meta name="description" content="C6TNT 的个人主页、作品集与博客。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#hero">C6TNT</a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero reveal" id="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">PERSONAL SITE / PORTFOLIO / JOURNAL</p>
+          <h1>构建清晰、快速、带一点未来感的数字作品。</h1>
+          <p class="hero-text">
+            我是 <strong>C6TNT</strong>，专注于把想法做成真正能上线的网页、作品与内容。
+            这里是我的个人主页、项目档案馆，也是持续更新的技术博客入口。
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">查看作品</a>
+            <a class="button button-ghost" href="blog.html">进入博客</a>
+          </div>
+          <ul class="signal-list">
+            <li>Responsive Ready</li>
+            <li>GitHub Pages Deploy</li>
+            <li>Motion Driven UI</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual reveal delay-1">
+          <div class="avatar-card">
+            <div class="avatar-orbit avatar-orbit-a"></div>
+            <div class="avatar-orbit avatar-orbit-b"></div>
+            <div class="avatar-core">
+              <span>C6</span>
+            </div>
+          </div>
+          <div class="status-panel">
+            <div>
+              <span class="label">Current Mode</span>
+              <strong>Building the web</strong>
+            </div>
+            <div>
+              <span class="label">Base</span>
+              <strong>GitHub Pages</strong>
+            </div>
+            <div>
+              <span class="label">Style</span>
+              <strong>Light Blue Tech</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel reveal" id="about">
+        <div class="section-heading">
+          <p class="eyebrow">ABOUT</p>
+          <h2>个人介绍</h2>
+        </div>
+        <div class="about-grid">
+          <article class="card glass-card">
+            <h3>关于我</h3>
+            <p>
+              我喜欢把视觉表达、代码结构和交互体验一起打磨到位。相比只“做出一个页面”，
+              我更在意它是否有节奏、是否易读、是否真的适合线上展示。
+            </p>
+          </article>
+          <article class="card glass-card">
+            <h3>我的方向</h3>
+            <p>
+              目前专注于个人品牌网站、展示型页面、前端界面优化和内容呈现。
+              我希望每个作品都能兼顾速度、可维护性与辨识度。
+            </p>
+          </article>
+          <article class="card glass-card">
+            <h3>团队协作</h3>
+            <p>
+              如果你也在做产品、内容、开发或设计，可以把这里当作一个公开工作台。
+              我会在博客里持续记录构建过程、经验与踩坑总结。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel reveal" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">PROJECTS</p>
+          <h2>项目展示</h2>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-meta">01 / Landing Page</div>
+            <h3>Blue Signal</h3>
+            <p>为个人品牌打造的科技感落地页，强调首屏冲击力、滚动节奏和轻量部署。</p>
+            <a href="https://github.com/C6TNT" target="_blank" rel="noreferrer">查看 GitHub</a>
+          </article>
+          <article class="project-card">
+            <div class="project-meta">02 / Portfolio</div>
+            <h3>Project Atlas</h3>
+            <p>作品集归档页面，用模块化卡片展示项目背景、技术栈、成果与后续迭代方向。</p>
+            <a href="https://github.com/C6TNT" target="_blank" rel="noreferrer">查看 GitHub</a>
+          </article>
+          <article class="project-card">
+            <div class="project-meta">03 / Content Lab</div>
+            <h3>Dev Notes</h3>
+            <p>博客型内容空间，适合发布开发笔记、教程、构建日志和项目复盘内容。</p>
+            <a href="blog.html">阅读文章</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel reveal" id="blog-preview">
+        <div class="section-heading">
+          <p class="eyebrow">BLOG</p>
+          <h2>最近文章</h2>
+        </div>
+        <div class="blog-grid">
+          <article class="blog-card">
+            <span class="blog-tag">Frontend</span>
+            <h3>我如何把 GitHub Pages 主页做得更像作品，而不是名片</h3>
+            <p>从信息层级、视觉识别到动效节奏，拆解个人主页应该如何建立第一印象。</p>
+            <a href="blog.html">继续阅读</a>
+          </article>
+          <article class="blog-card">
+            <span class="blog-tag">Build Log</span>
+            <h3>静态站点也可以很有表现力</h3>
+            <p>不依赖复杂框架，只用 HTML、CSS、JS 也能做出有细节、有速度的站点体验。</p>
+            <a href="blog.html">继续阅读</a>
+          </article>
+          <article class="blog-card">
+            <span class="blog-tag">Design</span>
+            <h3>浅蓝科技感配色怎么避免“模板味”</h3>
+            <p>通过材质层次、冷暖对比和发光控制，让页面更克制也更高级。</p>
+            <a href="blog.html">继续阅读</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel contact-panel reveal" id="contact">
+        <div class="section-heading">
+          <p class="eyebrow">CONTACT</p>
+          <h2>联系方式</h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <span class="label">GitHub</span>
+            <a href="https://github.com/C6TNT" target="_blank" rel="noreferrer">@C6TNT</a>
+          </div>
+          <div class="contact-card">
+            <span class="label">Email</span>
+            <a href="mailto:hello@c6tnt.dev">hello@c6tnt.dev</a>
+          </div>
+          <div class="contact-card">
+            <span class="label">Message</span>
+            <p>欢迎联系我聊项目、合作、内容创作或网站改版。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 C6TNT. Crafted for GitHub Pages.</p>
+      <a href="blog.html">Blog Archive</a>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
