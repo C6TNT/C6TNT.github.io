@@ -267,15 +267,28 @@ body.blog-page .blog-hero {
   max-width: 780px;
   font-size: clamp(1.68rem, 3vw, 2.8rem);
   line-height: 1.18;
-  text-wrap: nowrap;
 }
 
 .hero h1 span {
-  display: block;
+  display: inline;
 }
 
 .hero h1 span + span {
-  margin-top: 0.12em;
+  margin-top: 0;
+}
+
+@media (min-width: 1480px) {
+  .hero h1 {
+    text-wrap: nowrap;
+  }
+
+  .hero h1 span {
+    display: block;
+  }
+
+  .hero h1 span + span {
+    margin-top: 0.12em;
+  }
 }
 
 .blog-hero h1 {
