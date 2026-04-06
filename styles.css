@@ -263,6 +263,12 @@ body.blog-page .blog-hero {
   text-wrap: balance;
 }
 
+.hero h1 {
+  max-width: 760px;
+  font-size: clamp(1.75rem, 3.15vw, 2.95rem);
+  line-height: 1.2;
+}
+
 .blog-hero h1 {
   max-width: 900px;
   font-size: clamp(2rem, 3.7vw, 3.45rem);
