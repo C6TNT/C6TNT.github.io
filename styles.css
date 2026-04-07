@@ -840,6 +840,22 @@ body.blog-page .blog-hero {
     width: min(100% - 18px, 1180px);
   }
 
+  .topbar,
+  .editor-window,
+  .terminal-card,
+  .signal-box,
+  .panel-card,
+  .feature-panel,
+  .terminal-log {
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  }
+
+  .window-bar,
+  .status-bar {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
   .topbar {
     grid-template-columns: 1fr;
     justify-items: start;
