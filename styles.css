@@ -847,6 +847,7 @@ body.blog-page .blog-hero {
   .panel-card,
   .feature-panel,
   .terminal-log {
+    background: rgba(7, 18, 28, 0.96);
     border-color: rgba(255, 255, 255, 0.14);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
   }
