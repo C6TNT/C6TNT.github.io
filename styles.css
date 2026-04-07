@@ -901,7 +901,11 @@ body.blog-page .blog-hero {
   .panel-card h3,
   .feature-panel h3,
   .archive-item h3 {
+    font-size: 1.16rem;
+    line-height: 1.34;
     margin-bottom: 14px;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
   }
 
   .card-kicker,
