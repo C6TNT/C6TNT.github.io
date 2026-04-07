@@ -700,6 +700,37 @@ body.blog-page .blog-hero {
   grid-template-columns: 1.15fr 0.85fr;
 }
 
+.materials-shell {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 18px;
+}
+
+.resume-panel {
+  background:
+    linear-gradient(180deg, rgba(10, 28, 43, 0.94), rgba(8, 20, 31, 0.9));
+}
+
+.resume-notes {
+  margin-top: 0;
+}
+
+.resume-links {
+  margin-top: 18px;
+}
+
+.resume-side-card {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+}
+
+.resume-links-column {
+  display: grid;
+  gap: 16px;
+  margin-top: 4px;
+}
+
 .archive-list {
   display: grid;
   gap: 18px;
@@ -755,6 +786,7 @@ body.blog-page .blog-hero {
   .project-shell,
   .panel-grid.two-col,
   .writing-shell,
+  .materials-shell,
   .archive-shell {
     grid-template-columns: 1fr;
   }
