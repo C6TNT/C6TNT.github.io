@@ -7,7 +7,7 @@
   <meta name="description" content="C6TNT 的中文个人站，记录嵌入式开发、机器人控制、竞赛复盘与工程实践。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -46,12 +46,12 @@
             <div class="editor-content">
               <p class="eyebrow">嵌入式开发 / 竞赛复盘 / 工程实践</p>
               <h1>
-                <span>嵌入式开发、竞赛训练与工程实践</span>
-                <span>沉淀成清晰可复用的记录</span>
+                <span>做嵌入式、机器人和竞赛训练的记录</span>
+                <span>把走通的方法和踩过的坑写下来</span>
               </h1>
               <p class="hero-text">
-                我是 <strong>C6TNT</strong>，信息工程专业大四，专注嵌入式开发、机器人控制、智能车竞赛与工程实践。
-                这里主要整理 STM32、RTOS、CAN、控制系统、设备联调，以及蓝桥杯、电赛、机器人比赛和实习中的真实复盘。
+                我是 <strong>C6TNT</strong>，信息工程专业大四，主要在做嵌入式开发、机器人控制和竞赛训练相关的事。
+                这个站会持续整理 STM32、RTOS、CAN、控制系统、设备联调，以及蓝桥杯、电赛、机器人项目和实习里的真实复盘。
               </p>
               <div class="hero-actions">
                 <a class="button button-primary" href="#projects">查看项目</a>
@@ -80,7 +80,7 @@
             <img class="profile-avatar" src="avatar.png" alt="C6TNT 头像">
             <div class="info-group">
               <span class="info-label">当前身份</span>
-              <p class="terminal-output type-target" data-type="信息工程大四 / 嵌入式开发 / 机器人控制"></p>
+              <p class="terminal-output">信息工程大四 / 嵌入式开发 / 机器人控制</p>
             </div>
             <div class="info-group">
               <span class="info-label">关注方向</span>
@@ -98,25 +98,6 @@
         </aside>
       </section>
 
-      <section class="signal-strip reveal">
-        <div class="signal-box">
-          <span class="signal-label">技术栈</span>
-          <strong>STM32 / RTOS / CAN</strong>
-        </div>
-        <div class="signal-box">
-          <span class="signal-label">核心方向</span>
-          <strong>嵌入式 + 控制 + 竞赛</strong>
-        </div>
-        <div class="signal-box">
-          <span class="signal-label">内容类型</span>
-          <strong>项目复盘 + 学习总结</strong>
-        </div>
-        <div class="signal-box">
-          <span class="signal-label">站点状态</span>
-          <strong>持续更新中</strong>
-        </div>
-      </section>
-
       <section class="section reveal" id="about">
         <div class="section-head">
           <p class="eyebrow">关于我</p>
@@ -131,14 +112,14 @@
             </ul>
           </article>
           <article class="panel-card">
-            <p class="card-kicker">身份说明</p>
-            <h3>把经历沉淀成可复用的经验</h3>
-            <p>我希望把嵌入式开发、机器人控制和竞赛训练中的经验整理成清晰记录，让后来者少走一些弯路。</p>
+            <p class="card-kicker">为什么写</p>
+            <h3>把过程写清楚，比只放结果更有用</h3>
+            <p>很多内容如果只看最后的成品，其实很难知道中间怎么调、怎么改、怎么踩坑，所以我更愿意把过程写出来。</p>
           </article>
           <article class="panel-card">
             <p class="card-kicker">写作原则</p>
-            <h3>把真实经验写清楚，比堆名词更重要</h3>
-            <p>无论是蓝桥杯、电赛、机器人比赛还是实习，我更想记录真实过程、关键判断和踩坑细节。</p>
+            <h3>少一点套话，多一点真实细节</h3>
+            <p>无论是蓝桥杯、电赛、机器人比赛还是实习，我都尽量把关键判断、失败原因和可复用的做法写明白。</p>
           </article>
         </div>
       </section>
@@ -150,9 +131,9 @@
         </div>
         <div class="project-shell">
           <article class="feature-panel">
-            <p class="card-kicker">重点内容</p>
+            <p class="card-kicker">入门导读</p>
             <h3>电子信息类专业技术学习及比赛路线总结</h3>
-            <p>围绕单片机、FPGA、PCB、嵌入式系统与竞赛训练，梳理从大一到大三逐步推进的学习主线与实践路径。</p>
+            <p>如果你也是从电子信息、自动化或者嵌入式相关方向起步，这篇更适合作为整个站的第一篇入口。</p>
             <div class="feature-layout">
               <div>
                 <div class="tag-row">
@@ -166,8 +147,8 @@
                 </div>
               </div>
               <div class="feature-notes">
-                <p><strong>适合阅读：</strong>电子信息、自动化、嵌入式方向想建立整体学习路线的同学。</p>
-                <p><strong>内容覆盖：</strong>单片机、FPGA、PCB、嵌入式系统、竞赛准备与阶段规划。</p>
+                <p><strong>适合谁看：</strong>还在搭建学习主线、想知道比赛和项目怎么穿起来的同学。</p>
+                <p><strong>主要内容：</strong>单片机、FPGA、PCB、嵌入式系统、竞赛准备和阶段规划。</p>
               </div>
             </div>
           </article>

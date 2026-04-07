@@ -24,23 +24,6 @@ revealElements.forEach((element) => {
   revealObserver.observe(element);
 });
 
-const typeTarget = document.querySelector(".type-target");
-
-if (typeTarget) {
-  const content = typeTarget.dataset.type ?? "";
-  let index = 0;
-
-  const typeNext = () => {
-    if (index <= content.length) {
-      typeTarget.textContent = content.slice(0, index);
-      index += 1;
-      window.setTimeout(typeNext, 55);
-    }
-  };
-
-  typeNext();
-}
-
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", (event) => {
     const targetId = anchor.getAttribute("href");

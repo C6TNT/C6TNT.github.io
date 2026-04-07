@@ -1,16 +1,16 @@
 :root {
   --bg: #06111a;
   --bg-2: #091824;
-  --surface: rgba(8, 20, 31, 0.88);
-  --surface-soft: rgba(10, 24, 38, 0.72);
-  --line: rgba(91, 244, 255, 0.16);
-  --line-strong: rgba(91, 244, 255, 0.34);
+  --surface: rgba(8, 20, 31, 0.92);
+  --surface-soft: rgba(10, 24, 38, 0.78);
+  --line: rgba(91, 244, 255, 0.11);
+  --line-strong: rgba(91, 244, 255, 0.24);
   --text: #d8f3ff;
   --muted: #7ea8bb;
   --primary: #62f3ff;
   --primary-2: #46a3ff;
   --success: #8dffb5;
-  --shadow: 0 24px 60px rgba(0, 0, 0, 0.42);
+  --shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
 }
 
 * {
@@ -27,8 +27,8 @@ body {
   color: var(--text);
   font-family: "IBM Plex Sans SC", sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(70, 163, 255, 0.16), transparent 22%),
-    radial-gradient(circle at 85% 8%, rgba(98, 243, 255, 0.1), transparent 18%),
+    radial-gradient(circle at top left, rgba(70, 163, 255, 0.12), transparent 22%),
+    radial-gradient(circle at 85% 8%, rgba(98, 243, 255, 0.06), transparent 18%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 46%, #050d15 100%);
 }
 
@@ -37,10 +37,17 @@ body {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(98, 243, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(98, 243, 255, 0.045) 1px, transparent 1px);
+    linear-gradient(rgba(98, 243, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(98, 243, 255, 0.025) 1px, transparent 1px);
   background-size: 44px 44px;
-  mask-image: radial-gradient(circle at center, black 56%, transparent 94%);
+  mask-image: radial-gradient(circle at center, black 62%, transparent 96%);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Noto Serif SC", "IBM Plex Sans SC", sans-serif;
+  font-weight: 700;
 }
 
 a {
@@ -75,7 +82,7 @@ a {
   position: sticky;
   top: 10px;
   z-index: 30;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(6px);
   border-radius: 18px;
 }
 
@@ -151,8 +158,8 @@ body.blog-page .blog-hero {
   grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
   gap: 18px;
   align-items: stretch;
-  min-height: calc(100vh - 130px);
-  padding: 30px 0 12px;
+  min-height: auto;
+  padding: 24px 0 8px;
 }
 
 .window-bar {
@@ -171,10 +178,10 @@ body.blog-page .blog-hero {
 }
 
 .window-dots span {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background: rgba(126, 168, 187, 0.45);
+  background: rgba(126, 168, 187, 0.28);
 }
 
 .window-title {
@@ -195,7 +202,7 @@ body.blog-page .blog-hero {
 .editor-layout {
   display: grid;
   grid-template-columns: 160px 1fr;
-  min-height: 520px;
+  min-height: 470px;
 }
 
 .editor-sidebar {
@@ -340,7 +347,7 @@ body.blog-page .blog-hero {
 .button-primary {
   color: #031018;
   background: linear-gradient(135deg, var(--primary), var(--success));
-  box-shadow: 0 12px 30px rgba(98, 243, 255, 0.24);
+  box-shadow: 0 10px 20px rgba(98, 243, 255, 0.14);
 }
 
 .button-secondary {
@@ -400,13 +407,6 @@ body.blog-page .blog-hero {
   gap: 8px;
 }
 
-.type-target::after {
-  content: "_";
-  margin-left: 4px;
-  color: var(--primary);
-  animation: blink 1s steps(1) infinite;
-}
-
 .signal-strip,
 .panel-grid,
 .project-shell,
@@ -430,6 +430,10 @@ body.blog-page .blog-hero {
 .signal-strip {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   padding: 12px 0 20px;
+}
+
+.signal-strip {
+  display: none;
 }
 
 .signal-box {
@@ -497,8 +501,8 @@ body.blog-page .blog-hero {
 
 .section-head h2 {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: -0.04em;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  letter-spacing: -0.03em;
 }
 
 .filter-bar {
@@ -539,14 +543,14 @@ body.blog-page .blog-hero {
 
 .panel-card,
 .feature-panel {
-  padding: 24px;
+  padding: 22px;
 }
 
 .panel-card h3,
 .feature-panel h3,
 .archive-item h3 {
   margin: 0 0 12px;
-  font-size: 1.42rem;
+  font-size: 1.28rem;
 }
 
 .stat-list {
@@ -758,7 +762,7 @@ body.blog-page .blog-hero {
 .resume-action-primary {
   color: #031018;
   background: linear-gradient(135deg, var(--primary), var(--success));
-  box-shadow: 0 12px 28px rgba(98, 243, 255, 0.22);
+  box-shadow: 0 10px 20px rgba(98, 243, 255, 0.14);
 }
 
 .resume-action-secondary {
