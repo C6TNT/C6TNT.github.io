@@ -167,9 +167,9 @@ body.blog-page .blog-hero {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 10px 16px;
   border-bottom: 1px solid var(--line);
-  background: rgba(7, 19, 29, 0.92);
+  background: rgba(7, 19, 29, 0.76);
 }
 
 .window-dots {
@@ -195,37 +195,14 @@ body.blog-page .blog-hero {
 .feature-panel,
 .panel-card,
 .signal-box {
-  border-radius: 22px;
+  border-radius: 18px;
   overflow: hidden;
 }
 
 .editor-layout {
   display: grid;
-  grid-template-columns: 160px 1fr;
-  min-height: 470px;
-}
-
-.editor-sidebar {
-  display: grid;
-  align-content: start;
-  gap: 10px;
-  padding: 18px 14px;
-  background: rgba(4, 13, 22, 0.88);
-  border-right: 1px solid var(--line);
-  color: var(--muted);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.84rem;
-}
-
-.editor-sidebar span {
-  padding: 8px 10px;
-  border-radius: 10px;
-}
-
-.editor-sidebar .is-active {
-  color: var(--text);
-  background: rgba(98, 243, 255, 0.08);
-  border: 1px solid rgba(98, 243, 255, 0.16);
+  grid-template-columns: 1fr;
+  min-height: 430px;
 }
 
 .editor-content,
@@ -240,10 +217,10 @@ body.blog-page .blog-hero {
 .status-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
-  padding: 10px 16px;
+  gap: 14px;
+  padding: 9px 16px;
   border-top: 1px solid var(--line);
-  background: rgba(4, 13, 22, 0.86);
+  background: rgba(4, 13, 22, 0.72);
 }
 
 .status-bar span {
@@ -256,8 +233,8 @@ body.blog-page .blog-hero {
 .signal-label {
   margin: 0 0 12px;
   color: var(--primary);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
 }
 
 .hero h1,
@@ -317,9 +294,9 @@ body.blog-page .blog-hero {
 
 .hero-text {
   max-width: 620px;
-  margin: 18px 0 0;
+  margin: 16px 0 0;
   font-size: 0.95rem;
-  line-height: 1.85;
+  line-height: 1.8;
 }
 
 .hero-actions {
@@ -334,7 +311,7 @@ body.blog-page .blog-hero {
   align-items: center;
   justify-content: center;
   min-width: 146px;
-  padding: 13px 18px;
+  padding: 12px 18px;
   border-radius: 999px;
   font-weight: 700;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -448,7 +425,7 @@ body.blog-page .blog-hero {
 .section,
 .blog-hero,
 .archive-shell {
-  padding: 34px 0;
+  padding: 30px 0;
 }
 
 .scroll-hint {
@@ -811,7 +788,7 @@ body.blog-page .blog-hero {
 }
 
 .contact-link {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
 }
 
 .footer {
