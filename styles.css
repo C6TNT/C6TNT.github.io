@@ -649,6 +649,29 @@ body.blog-page .blog-hero {
     linear-gradient(180deg, rgba(11, 28, 44, 0.92), rgba(8, 20, 31, 0.9));
 }
 
+.thesis-card {
+  background:
+    linear-gradient(180deg, rgba(12, 31, 47, 0.94), rgba(8, 20, 31, 0.9));
+  border: 1px solid rgba(98, 243, 255, 0.22);
+}
+
+.thesis-card h3 {
+  max-width: 18ch;
+}
+
+.thesis-tags {
+  margin-top: 18px;
+  margin-bottom: 16px;
+}
+
+.thesis-notes {
+  margin-top: 0;
+}
+
+.thesis-links {
+  margin-top: 18px;
+}
+
 .tag-row span {
   padding: 8px 12px;
   border-radius: 999px;
