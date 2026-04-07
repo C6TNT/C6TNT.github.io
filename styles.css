@@ -478,18 +478,21 @@ body.blog-page .blog-hero {
   align-items: start;
 }
 
-#projects .section-head h2 {
-  text-align: right;
-}
-
 #projects .section-head {
-  min-height: 132px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
+  min-height: 168px;
+  margin-bottom: 12px;
 }
 
 #projects .section-head .eyebrow {
-  align-self: end;
-  margin-bottom: 18px;
+  margin: 72px 0 0;
+}
+
+#projects .section-head h2 {
+  margin-top: 28px;
+  text-align: right;
 }
 
 .section-head h2 {
