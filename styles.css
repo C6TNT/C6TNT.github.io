@@ -482,16 +482,16 @@ body.blog-page .blog-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
-  min-height: 168px;
+  min-height: 196px;
   margin-bottom: 12px;
 }
 
 #projects .section-head .eyebrow {
-  margin: 72px 0 0;
+  margin: 108px 0 0;
 }
 
 #projects .section-head h2 {
-  margin-top: 28px;
+  margin-top: 64px;
   text-align: right;
 }
 
