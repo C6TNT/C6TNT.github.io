@@ -1,4 +1,4 @@
-# C6TNT GitHub Pages
+# TNT_JQR GitHub Pages
 
 这是一个适用于 `C6TNT.github.io` 的静态个人站点，包含：
 
