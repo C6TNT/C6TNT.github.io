@@ -299,6 +299,15 @@ body.blog-page .blog-hero {
   line-height: 1.8;
 }
 
+.hero-path-note {
+  max-width: 620px;
+  margin: 14px 0 0;
+  color: var(--text);
+  opacity: 0.88;
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -891,6 +900,12 @@ body.blog-page .blog-hero {
   .hero-text {
     margin-top: 18px;
     font-size: 0.98rem;
+  }
+
+  .hero-path-note {
+    margin-top: 16px;
+    font-size: 0.94rem;
+    line-height: 1.8;
   }
 
   .hero-actions {
