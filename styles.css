@@ -797,6 +797,41 @@ body.blog-page .blog-hero {
   color: var(--text);
 }
 
+.salary-panel {
+  margin-top: 18px;
+}
+
+.salary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.salary-item {
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.salary-item p,
+.salary-summary p {
+  margin: 0;
+}
+
+.salary-item p + p {
+  margin-top: 10px;
+}
+
+.salary-summary {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-left: 3px solid rgba(98, 243, 255, 0.4);
+  background: rgba(98, 243, 255, 0.04);
+  border-radius: 12px;
+}
+
 .archive-list {
   display: grid;
   gap: 18px;
@@ -868,7 +903,8 @@ body.blog-page .blog-hero {
   .panel-grid.two-col,
   .writing-shell,
   .materials-shell,
-  .archive-shell {
+  .archive-shell,
+  .salary-grid {
     grid-template-columns: 1fr;
   }
 
