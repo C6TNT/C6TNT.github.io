@@ -819,6 +819,21 @@ body.blog-page .blog-hero {
   font-size: 1.05rem;
 }
 
+.writing-stats {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.writing-stats p {
+  margin: 0;
+  color: var(--muted);
+}
+
 .footer {
   display: flex;
   justify-content: space-between;
