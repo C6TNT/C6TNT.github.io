@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TNT_JQR | 从单驱到双驱 i.MX8MP RPMsg CANopen 联调复盘</title>
+  <meta name="description" content="记录 i.MX8MP 平台上从单驱到双驱 CANopen 控制链打通的完整联调过程，包括 RPMsg、M7、双驱伺服、对象页对照与验证链收敛。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="article-page">
+  <div class="grid-backdrop"></div>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html">TNT_JQR</a>
+      <nav class="nav">
+        <a href="index.html#about">关于</a>
+        <a href="index.html#projects">项目</a>
+        <a href="blog.html">文章</a>
+        <a href="index.html#contact">联系</a>
+      </nav>
+      <a class="topbar-link" href="blog.html">返回归档</a>
+    </header>
+
+    <main class="article-main">
+      <section class="article-hero reveal">
+        <div class="editor-window">
+          <div class="window-bar">
+            <div class="window-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="window-title">独立文章</div>
+          </div>
+          <div class="editor-content article-hero-content">
+            <p class="eyebrow">工程复盘 / i.MX8MP / RPMsg / CANopen</p>
+            <h1>从单驱到双驱 i.MX8MP RPMsg CANopen 联调复盘</h1>
+            <p class="article-subtitle">不是简单把两台电机都转起来，而是把一条从 A 核到 M7、再到双驱伺服的控制链真正收敛成可验证、可复用、可稳定运行的方案。</p>
+            <div class="article-meta">
+              <span>2026.04.09</span>
+              <span>个人工作复盘</span>
+              <span>华恒实习相关经验</span>
+            </div>
+          </div>
+          <div class="status-bar">
+            <span>双驱控制链</span>
+            <span>对象页对照</span>
+            <span>顺序验证</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="article-shell reveal delay-1">
+        <article class="feature-panel article-summary">
+          <p class="card-kicker">先看结论</p>
+          <h3>这篇文章真正想讲的，不是“某个寄存器怎么写”，而是复杂联调里应该怎么逐步缩小真实问题。</h3>
+          <div class="article-bullet-grid">
+            <div class="article-bullet-card">
+              <p><strong>第一层</strong></p>
+              <p>先建立单驱最小可运行基线，别一开始就在复杂主工程里同时改所有东西。</p>
+            </div>
+            <div class="article-bullet-card">
+              <p><strong>第二层</strong></p>
+              <p>把对象页、串口日志和程序回读放在一起看，分清“代码以为发了什么”和“驱动器真实到位了什么”。</p>
+            </div>
+            <div class="article-bullet-card">
+              <p><strong>第三层</strong></p>
+              <p>复杂系统后期，失败不一定来自控制链本身，验证链和工具链也会制造非常像真失败的假象。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">1. 项目背景</p>
+          <h2>目标不是单驱示例通过，而是把双驱控制链真正打通</h2>
+          <p>这个项目的目标，是在 i.MX8MP 平台上建立一条完整的双驱控制链：A 核上层程序下发控制参数，经由 <code>librobot.so</code> 和 RPMsg 传到 M7，再由 M7 通过 CANopen 同时控制两台 Kinco FD5 伺服驱动器，让双轴按照设定速度稳定运行，并且保留必要的反馈与验证能力。</p>
+          <div class="article-chain">
+            <code>main.py -> librobot.so -> RPMsg -> M7 weld_parameter / servo_can -> CANopen -> node1 / node2 -> Kinco FD5 -> 电机转动</code>
+          </div>
+          <p>真正复杂的地方，不是链路看起来长，而是这条链上每一层都有自己的状态、自己的日志、自己的“以为成功”。如果不把这些状态拆开看，后面很容易一直在假问题上打转。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">2. 工程上下文</p>
+          <h2>联调前先把三套工程的角色关系理清</h2>
+          <p>项目开始时，眼前并不是一套干净的主线工程，而是三套成熟度和用途都不完全一样的上下文同时存在：</p>
+          <ul class="article-list">
+            <li><strong>mix_protocol</strong>：最终要运行在系统里的 M7 主工程，负责板级初始化、FreeRTOS、RPMsg、焊接参数对象、CAN 任务和双驱控制。</li>
+            <li><strong>机器人动态库工程</strong>：A 核侧控制入口，形成 <code>main.py -> librobot.so -> Weld_Direct_*</code> 这一层控制与回读接口。</li>
+            <li><strong>CAN 接口参考工程</strong>：一个已经能跑通单驱控制的最小样本，证明只依赖最少的 PDO 和少量 SDO 也能先把电机稳定拉起来。</li>
+          </ul>
+          <p>这一步非常重要。因为后面真正有意义的修改，最终都要回到 <code>mix_protocol</code> 里；但在它足够复杂的情况下，最可信的调试参考反而是那条单驱最小链。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">3. 第一阶段</p>
+          <h2>先打通单驱最小闭环，把参考基线立住</h2>
+          <p>整个项目真正起作用的第一步，不是直接冲双驱，而是先建立一条可控、可验证、可重复的单驱最小闭环。</p>
+          <p>这一阶段优先关注这些对象：</p>
+          <ul class="article-list">
+            <li><code>0x6060</code>：工作模式</li>
+            <li><code>0x6040</code>：控制字</li>
+            <li><code>0x60FF</code>：目标速度</li>
+            <li><code>0x6041</code>：状态字</li>
+            <li><code>0x6064 / 0x606C</code>：实际位置与实际速度</li>
+          </ul>
+          <p>单驱阶段最后能成立，不是因为“某个函数终于调通”，而是因为逐项对照参考工程，把主工程先拉回了一条已经被证明有效的 CANopen 控制路径。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">4. 第二阶段</p>
+          <h2>把单驱方案迁回主工程后，真正难的是抗干扰</h2>
+          <p>单驱能跑通，并不意味着进入主工程后也会自然稳定。因为主工程里同时还有 RPMsg、焊接参数对象、多任务调度、反馈镜像、A 核回读接口以及双节点管理。</p>
+          <p>这一阶段最有效的调试动作，是把程序日志和上位机对象页放在一起对照。问题开始不再是“代码有没有发 0x60FF”，而变成：</p>
+          <ul class="article-list">
+            <li>对象页里的 <code>0x60FF</code> 到底是多少</li>
+            <li><code>0x6041</code> 是否真的进入目标状态</li>
+            <li><code>0x606C</code> 是否有真实速度</li>
+            <li>程序回读和驱动器真实状态是不是已经分叉</li>
+          </ul>
+          <p>这一步开始之后，项目的判断标准才第一次从“程序感觉像对了”变成“对象页真的到位了没有”。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">5. 双驱核心问题</p>
+          <h2>双驱最难的，不是两台都转，而是把第一台真正拉回速度控制基线</h2>
+          <p>双驱阶段最有迷惑性的地方在于：单驱都能跑，一到双驱反而第一台更早出问题，第二台有时更像“正常样本”。这很容易让人误以为是第一台驱动器硬件不行，或者速度对象没写进去。</p>
+          <p>但真正的本质是：第一台更早暴露了“速度控制基线未完全对齐”这个问题。最典型的证据是，它的 <code>0x6083 / 0x6084</code> 长时间停在旧值 <code>107372</code>，而不是目标值 <code>3000000</code>。</p>
+          <p>这说明它不是“完全没收到命令”，而是只进入了部分启动链，还没有真正把完整速度控制前提对象全部建立起来。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">6. 收敛过程</p>
+          <h2>真正把第一台拉回来的，不是多加功能，而是持续去掉扰动路径</h2>
+          <p>后面最关键的几步，都是围绕“把扰动变量剥掉”展开的。</p>
+          <ul class="article-list">
+            <li>先把第二台当成参考样本，逐项对照对象页和启动顺序，而不是两台一起瞎改。</li>
+            <li>尝试过让 <code>0x6083 / 0x6084</code> 通过运行期 RPDO2 发送，最终明确证伪：理论上看似可行，实测却会破坏稳定性。</li>
+            <li>收回到更干净的控制链：RPDO1 只保留模式、控制字和目标速度；Acc/Dec 回到更稳定的写入方式。</li>
+            <li>从“目标速度有没有发”转到“加减速对象有没有先到位”，把 <code>0x6083 / 0x6084</code> 当作真正的前提判断。</li>
+          </ul>
+          <p>最后当第一台对象页里稳定出现 <code>6083 = 3000000</code>、<code>6084 = 3000000</code> 时，早期那个“速度控制基线未对齐”的真实问题，才算真正解决。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">7. 另一个分水岭</p>
+          <h2>后期很多“失败”其实不是控制失败，而是验证链自己制造的假失败</h2>
+          <p>当真实控制链逐渐成功后，项目后期又出现了一个非常危险的现象：驱动器对象页已经正确、电机也确实在转，但验证脚本还在报 <code>VERIFY FAIL</code>，甚至伴随 <code>OpenRpmsg failed</code> 和 <code>errno=16</code>。</p>
+          <p>后面通过观察发现，只要同时跑两个验证脚本，就更容易出现这类问题。根因不是 CAN 控制失败，而是两个验证进程在争抢同一个 RPMsg 通道。</p>
+          <p>这直接引出一个很重要的方法论：复杂系统里，验证链也必须被当成调试对象本身。顺序验证不是一个“小技巧”，而是把验证流程工程化的开始。</p>
+          <ul class="article-list">
+            <li>先验证 axis0</li>
+            <li>等待结束</li>
+            <li>再验证 axis1</li>
+          </ul>
+          <p>顺序验证固定下来之后，控制链、验证链和 RPMsg 通道状态才第一次真正被拆开看，很多原本“像失败”的现象也终于变得可解释。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">8. 最终保留下来的经验</p>
+          <h2>这次联调最值得留下的，不是某个写法，而是一套判断问题的方法</h2>
+          <ul class="article-list">
+            <li>单驱能通过，只能证明“驱动器单体可控”，不能自动推出双驱冷启动也完全正确。</li>
+            <li>对象页里的真实对象状态，比程序镜像和回读更能说明问题到底是真是假。</li>
+            <li>复杂系统不稳定，很多时候不是少了某个功能，而是存在一条持续扰动正确状态的错误路径。</li>
+            <li>一旦真实控制基线已经对齐，就要警惕反馈链和验证链继续制造假象。</li>
+            <li>好的联调不是无限试错，而是持续缩小“真实失败”和“假失败”的边界。</li>
+          </ul>
+          <p>回头看，这篇复盘最核心的价值，不只是记录一次 CANopen 双驱调通，而是把“复杂控制链怎么收敛成稳定方案”这件事写清楚。</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>独立文章持续整理中</p>
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="blog.html">归档</a>
+        <a href="mailto:1277426628@qq.com">邮箱</a>
+        <a href="https://blog.csdn.net/TNT_JQR?type=blog" target="_blank" rel="noreferrer">CSDN</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
