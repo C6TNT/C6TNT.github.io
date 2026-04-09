@@ -74,6 +74,39 @@
         </article>
 
         <article class="panel-card article-section">
+          <p class="card-kicker">总览链路</p>
+          <h2>先把控制链和验证链分开看，很多问题会立刻清楚</h2>
+          <div class="flow-grid">
+            <div class="flow-card">
+              <span class="flow-label">A 核</span>
+              <strong>main.py / librobot.so</strong>
+              <p>上层参数下发、顺序验证入口、回读调度</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-card">
+              <span class="flow-label">核间通信</span>
+              <strong>RPMsg</strong>
+              <p>A 核与 M7 之间的参数传递与调用通道</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-card">
+              <span class="flow-label">M7 侧</span>
+              <strong>weld_parameter / servo_can</strong>
+              <p>任务调度、参数镜像、CANopen 报文组织与对象维护</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-card">
+              <span class="flow-label">总线与驱动</span>
+              <strong>CANopen / Kinco FD5</strong>
+              <p>双驱节点控制、对象页状态建立、电机真实运行</p>
+            </div>
+          </div>
+          <div class="article-highlight">
+            <p><strong>这篇复盘最核心的判断：</strong>前期的主问题是控制基线没对齐，后期的主问题是验证链在制造假失败。只有把这两层分开，项目才真正开始收敛。</p>
+          </div>
+        </article>
+
+        <article class="panel-card article-section">
           <p class="card-kicker">1. 项目背景</p>
           <h2>目标不是单驱示例通过，而是把双驱控制链真正打通</h2>
           <p>这个项目的目标，是在 i.MX8MP 平台上建立一条完整的双驱控制链：A 核上层程序下发控制参数，经由 <code>librobot.so</code> 和 RPMsg 传到 M7，再由 M7 通过 CANopen 同时控制两台 Kinco FD5 伺服驱动器，让双轴按照设定速度稳定运行，并且保留必要的反馈与验证能力。</p>

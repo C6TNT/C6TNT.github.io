@@ -1012,6 +1012,59 @@ body.blog-page .blog-hero {
   margin-top: 10px;
 }
 
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, auto));
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.flow-card {
+  min-width: 0;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.flow-card strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1rem;
+}
+
+.flow-card p {
+  margin: 10px 0 0;
+}
+
+.flow-label {
+  color: var(--primary);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+}
+
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.article-highlight {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-left: 3px solid rgba(98, 243, 255, 0.42);
+  border-radius: 12px;
+  background: rgba(98, 243, 255, 0.04);
+}
+
+.article-highlight p {
+  margin: 0;
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -1030,8 +1083,13 @@ body.blog-page .blog-hero {
   .archive-shell,
   .path-advice-grid,
   .salary-grid,
-  .article-bullet-grid {
+  .article-bullet-grid,
+  .flow-grid {
     grid-template-columns: 1fr;
+  }
+
+  .flow-arrow {
+    display: none;
   }
 
   .feature-layout {
