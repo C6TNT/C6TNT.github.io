@@ -645,7 +645,17 @@ body.blog-page .blog-hero {
   border: 1px solid rgba(98, 243, 255, 0.22);
 }
 
+.project-article-card {
+  background:
+    linear-gradient(180deg, rgba(11, 28, 44, 0.94), rgba(8, 20, 31, 0.9));
+  border: 1px solid rgba(98, 243, 255, 0.16);
+}
+
 .thesis-card h3 {
+  max-width: 18ch;
+}
+
+.project-article-card h3 {
   max-width: 18ch;
 }
 
@@ -679,6 +689,10 @@ body.blog-page .blog-hero {
 
 .thesis-links {
   margin-top: 18px;
+}
+
+.article-card-notes {
+  margin-top: 20px;
 }
 
 .tag-row span {
