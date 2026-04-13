@@ -1083,6 +1083,282 @@ body.blog-page .blog-hero {
   margin: 0;
 }
 
+body.essay-page {
+  color: #273845;
+  background:
+    radial-gradient(circle at top left, rgba(190, 214, 230, 0.35), transparent 22%),
+    radial-gradient(circle at 85% 8%, rgba(232, 211, 190, 0.22), transparent 18%),
+    linear-gradient(180deg, #f7f3ee 0%, #f2ece4 52%, #ebe4db 100%);
+}
+
+body.essay-page .grid-backdrop {
+  background-image:
+    linear-gradient(rgba(59, 84, 101, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 84, 101, 0.04) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at center, black 74%, transparent 98%);
+}
+
+body.essay-page .topbar,
+body.essay-page .editor-window,
+body.essay-page .panel-card {
+  border: 1px solid rgba(76, 98, 112, 0.12);
+  background: rgba(255, 251, 246, 0.88);
+  box-shadow: 0 16px 36px rgba(73, 61, 49, 0.08);
+}
+
+body.essay-page .window-bar,
+body.essay-page .status-bar {
+  background: rgba(248, 243, 237, 0.9);
+  border-color: rgba(76, 98, 112, 0.1);
+}
+
+body.essay-page .window-title,
+body.essay-page .topbar-link,
+body.essay-page .nav a,
+body.essay-page .status-bar span,
+body.essay-page .article-meta span,
+body.essay-page .footer p,
+body.essay-page .footer-links a {
+  color: #6c7c87;
+}
+
+body.essay-page .brand,
+body.essay-page .eyebrow,
+body.essay-page .card-kicker,
+body.essay-page .essay-index,
+body.essay-page .timeline-dot,
+body.essay-page .essay-advice-item span {
+  color: #8b6b50;
+}
+
+body.essay-page .nav a:hover,
+body.essay-page .topbar-link:hover,
+body.essay-page .inline-link:hover {
+  color: #8b6b50;
+  text-shadow: none;
+}
+
+body.essay-page h1,
+body.essay-page h2,
+body.essay-page h3 {
+  color: #22313d;
+}
+
+body.essay-page p,
+body.essay-page li,
+body.essay-page .article-subtitle,
+body.essay-page .essay-lead,
+body.essay-page .article-list,
+body.essay-page .essay-point p {
+  color: #516570;
+}
+
+.essay-main {
+  padding-top: 32px;
+}
+
+.essay-hero-content {
+  min-height: auto;
+  padding-bottom: 30px;
+}
+
+.essay-hero .article-subtitle {
+  max-width: 620px;
+  margin: 18px 0 0;
+  font-size: 1.18rem;
+  line-height: 1.9;
+}
+
+.essay-shell {
+  display: grid;
+  gap: 20px;
+}
+
+.essay-intro-card,
+.essay-section {
+  padding: 28px 30px;
+}
+
+.essay-lead {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+.essay-quote {
+  margin: 24px 0;
+  padding: 18px 20px;
+  border-left: 3px solid rgba(139, 107, 80, 0.5);
+  border-radius: 14px;
+  background: rgba(139, 107, 80, 0.08);
+}
+
+.essay-quote p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.95;
+  color: #3f525f;
+}
+
+.essay-quote-large {
+  padding: 24px 24px;
+}
+
+.essay-quote-large p {
+  font-size: 1.08rem;
+}
+
+.essay-section-head {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 20px;
+}
+
+.essay-index {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.essay-section h2 {
+  margin: 0;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  line-height: 1.45;
+}
+
+.essay-section p {
+  margin: 0 0 18px;
+  line-height: 2;
+  font-size: 1.02rem;
+}
+
+.essay-timeline {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  margin: 6px 0 24px;
+  padding-left: 14px;
+}
+
+.essay-timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(108, 124, 135, 0.2);
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 16px;
+}
+
+.timeline-dot {
+  position: relative;
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: #8b6b50;
+  box-shadow: 0 0 0 6px rgba(139, 107, 80, 0.08);
+}
+
+.timeline-item h3,
+.essay-point h3,
+.essay-advice-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.06rem;
+}
+
+.timeline-item p,
+.essay-advice-item p {
+  margin: 0;
+}
+
+.essay-list-card {
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(76, 98, 112, 0.1);
+}
+
+.essay-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.essay-grid-wide {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.essay-point {
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.44);
+  border: 1px solid rgba(76, 98, 112, 0.1);
+}
+
+.essay-point .essay-quote {
+  margin-bottom: 0;
+}
+
+.essay-checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0 24px;
+}
+
+.essay-checklist.compact {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.essay-check {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.48);
+  border: 1px solid rgba(76, 98, 112, 0.1);
+  color: #425764;
+  line-height: 1.75;
+}
+
+.essay-advice-list {
+  display: grid;
+  gap: 16px;
+}
+
+.essay-advice-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.44);
+  border: 1px solid rgba(76, 98, 112, 0.1);
+}
+
+.essay-advice-item span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(139, 107, 80, 0.12);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -1113,6 +1389,13 @@ body.blog-page .blog-hero {
   .feature-layout {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+
+  .essay-grid,
+  .essay-grid-wide,
+  .essay-checklist,
+  .essay-checklist.compact {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1145,6 +1428,11 @@ body.blog-page .blog-hero {
 
   .editor-layout,
   .archive-item {
+    grid-template-columns: 1fr;
+  }
+
+  .essay-section-head,
+  .essay-advice-item {
     grid-template-columns: 1fr;
   }
 
@@ -1209,6 +1497,19 @@ body.blog-page .blog-hero {
 
   .status-bar {
     gap: 10px;
+  }
+
+  .essay-intro-card,
+  .essay-section,
+  .essay-point,
+  .essay-advice-item,
+  .essay-list-card {
+    padding: 22px 20px;
+  }
+
+  .essay-index,
+  .essay-advice-item span {
+    margin-bottom: 4px;
   }
 }
 
