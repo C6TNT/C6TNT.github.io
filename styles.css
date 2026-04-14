@@ -308,6 +308,27 @@ body.blog-page .blog-hero {
   line-height: 1.75;
 }
 
+.hero-important-link {
+  max-width: 640px;
+  margin-top: 20px;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(14, 31, 43, 0.9), rgba(8, 20, 31, 0.88));
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+}
+
+.hero-important-link h3 {
+  margin: 0 0 10px;
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+
+.hero-important-link p:last-of-type {
+  margin-bottom: 0;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -339,6 +360,19 @@ body.blog-page .blog-hero {
 .button-secondary {
   border: 1px solid var(--line-strong);
   background: rgba(9, 24, 36, 0.8);
+}
+
+.button-ghost {
+  min-width: 0;
+  margin-top: 14px;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.button-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
 }
 
 .terminal-body p {
