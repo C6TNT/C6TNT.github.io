@@ -149,6 +149,11 @@ body.blog-page .blog-hero {
   transform: none;
 }
 
+body.blog-page .archive-shell {
+  opacity: 1;
+  transform: none;
+}
+
 .delay-1 {
   transition-delay: 0.14s;
 }
