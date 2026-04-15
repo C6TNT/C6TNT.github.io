@@ -1440,6 +1440,20 @@ body.essay-page .essay-point p {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.essay-original {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(86, 104, 122, 0.22);
+}
+
+.essay-original p {
+  margin: 0 0 1.2rem;
+}
+
+.essay-original p:last-child {
+  margin-bottom: 0;
+}
+
 .essay-check {
   padding: 14px 16px;
   border-radius: 14px;
