@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TNT_JQR | 从单驱转动到双驱动器适配：i.MX8MP RPMsg EtherCAT 联调复盘</title>
+  <meta name="description" content="记录 i.MX8MP 平台上从单驱 EtherCAT 到双驱动器适配的联调过程，围绕 A53 XML 解析、RPMsg profile 下发、M7 EtherCAT 运行层以及 YAKO / 步科两条接入策略展开。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="article-page">
+  <div class="grid-backdrop"></div>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html">TNT_JQR</a>
+      <nav class="nav">
+        <a href="index.html#about">关于</a>
+        <a href="index.html#projects">项目</a>
+        <a href="blog.html">文章</a>
+        <a href="index.html#contact">联系</a>
+      </nav>
+      <a class="topbar-link" href="blog.html">返回归档</a>
+    </header>
+
+    <main class="article-main">
+      <section class="article-hero reveal">
+        <div class="editor-window">
+          <div class="window-bar">
+            <div class="window-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="window-title">独立文章</div>
+          </div>
+          <div class="editor-content article-hero-content">
+            <p class="eyebrow">工程复盘 / i.MX8MP / RPMsg / EtherCAT</p>
+            <h1>从单驱转动到双驱动器适配：i.MX8MP RPMsg EtherCAT 联调复盘</h1>
+            <p class="article-subtitle">这次工作的真正成果，不只是把一台 EtherCAT 电机转起来，而是把一条从 A53 到 M7、再到不同厂家驱动器的控制链，逐步收敛成一套可验证、可复用、可继续扩展的方案。</p>
+            <div class="article-meta">
+              <span>2026.04.21</span>
+              <span>个人工作复盘</span>
+              <span>实习相关经验</span>
+            </div>
+          </div>
+          <div class="status-bar">
+            <span>单驱基线</span>
+            <span>XML 解析</span>
+            <span>双策略接入</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="article-shell reveal delay-1">
+        <article class="feature-panel article-summary">
+          <p class="card-kicker">先看结论</p>
+          <h3>这次联调最后沉淀下来的，不是一份“某个驱动器能跑”的临时样本，而是一套更清晰的接入判断方法。</h3>
+          <div class="article-bullet-grid">
+            <div class="article-bullet-card">
+              <p><strong>第一层</strong></p>
+              <p>先把单节点 EtherCAT 最小闭环立住，确认核间通信、主站扫描、PDO 收发和速度模式都成立，再谈驱动器适配。</p>
+            </div>
+            <div class="article-bullet-card">
+              <p><strong>第二层</strong></p>
+              <p>把 XML 解析、A 核 profile 下发、M 核 EtherCAT 运行和驱动器实际反馈拆开看，分清“代码以为自己下发了什么”和“驱动器最终接受了什么”。</p>
+            </div>
+            <div class="article-bullet-card">
+              <p><strong>第三层</strong></p>
+              <p>不同驱动器不能默认复用同一套 PDO 策略，当前已经验证出 YAKO 与步科分别对应的两条接入路径。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">总览链路</p>
+          <h2>先把控制链和接入链放在一起看，很多问题会立刻清楚。</h2>
+          <p>上层由 A53 负责读取 XML / ESI，提取 Vendor、Product、Revision、PDO、模式对象等关键信息，形成 <code>ec_slave_profile_t</code> 对应的 JSON；随后通过 RPMsg 下发给 M7，同时回读当前的 <code>loaded / applied / slaves / ob / ib / inOP / task</code> 等运行状态。M7 侧接收 profile 之后，根据驱动器能力选择 PDO remap 或 default PDO layout 两条路径之一，完成过程数据打包、解包和速度模式控制，最后由 EtherCAT 驱动器建立 PDO 收发关系，把电机稳定带起来。</p>
+          <div class="article-chain">
+            <code>A53 XML解析 -&gt; profile生成 -&gt; RPMsg -&gt; M7 EtherCAT -&gt; 驱动器PDO -&gt; 电机转动</code>
+          </div>
+          <p>这次工作的关键，在于这条链不再只对应某一个固定驱动器，而是已经开始具备“按驱动器能力选择接入方式”的基础。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">项目背景</p>
+          <h2>目标不是做一个离散的单驱演示，而是在现有工程中建立一条可继续扩展的 EtherCAT 接入主线。</h2>
+          <p>当前项目运行在 i.MX8MP 平台上，M7 侧主工程承担 EtherCAT 主站与实时循环，A53 侧承担 XML 解析、profile 生成和 RPMsg 下发。一开始更现实的目标，是先把单驱控制基线跑通。因为如果连单节点速度模式都不稳定，后面所有 XML 解析、PDO 对齐和驱动器兼容性判断都会变成漂浮在空中的讨论。</p>
+          <p>这一步完成后，问题就从“电机能不能转”转到了“这条链路有没有形成一个足够稳定的基线，让不同厂家驱动器都能接进来”。后面的工作也基本都围绕这个目标展开。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">第一阶段</p>
+          <h2>先把单驱最小闭环立住</h2>
+          <p>整个调试真正起作用的第一步，是先确认 A53 与 M7 的核间通信成立，再确认 M7 EtherCAT 主站能够识别单个从站，并在 CSV 速度模式下把电机稳定带起来。这一阶段最关键的判断点并不复杂，但每一个都得落到可验证状态上。</p>
+          <ul class="article-list">
+            <li>A53 侧 <code>/dev/rpmsg0</code> 到 <code>/dev/rpmsg3</code> 是否完整出现</li>
+            <li>M7 是否已经能回报 <code>slaves / inOP / ob / ib / task</code></li>
+            <li>驱动器是否已经进入有效运行状态</li>
+            <li>目标速度下发后，编码器或实际位置是否持续变化</li>
+          </ul>
+          <p>单驱阶段最后能成立，不是因为某一个函数突然对了，而是因为核间通信、总线扫描、过程数据收发和速度模式控制被逐个拉回了可验证状态。这条最小闭环后面也成了所有驱动器适配时的对照基线。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">第二阶段</p>
+          <h2>把 XML 解析真正接到工程里</h2>
+          <p>单驱最小闭环成立之后，接下来的重点就从“先转起来”转到了“怎么让不同驱动器接进来”。这一步的核心工具，是 A53 侧的 XML 解析器和 profile 下发工具。</p>
+          <p><code>tools/xml_to_ec_profile.py</code> 负责读取 XML / ESI 文件，提取 Vendor ID、Product Code、Revision、PDO、<code>0x6060</code> 等对象信息，生成与 M 核 <code>ec_slave_profile_t</code> 对齐的 JSON 或 C 初始化数据。<code>tools/a53_send_ec_profile.cpp</code> 负责在 A53 上单独运行。它读取 profile JSON，通过 <code>/dev/rpmsg0</code> 将 profile 发给 M7，并回读 M7 的 profile 状态与 EtherCAT 运行状态。</p>
+          <p>做到这里，链路的意义已经变了。XML 不再只是一个离线参考文件，而是开始真正进入工程运行路径：</p>
+          <div class="article-chain">
+            <code>XML -&gt; profile -&gt; RPMsg -&gt; M7</code>
+          </div>
+          <p>这一步一旦成立，后面的区别就不在“能不能解析 XML”，而在“驱动器接不接受你希望的 PDO 策略”。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">第三阶段</p>
+          <h2>YAKO 适配说明了 remap 路线是可行的</h2>
+          <p>YAKO 驱动器的适配结果比较直接。它可以接受基于 XML profile 的 PDO 重映射，因此这条链路能够成立：</p>
+          <div class="article-chain">
+            <code>XML -&gt; profile -&gt; remap -&gt; 运行</code>
+          </div>
+          <p>在实际测试中，YAKO 的 profile 可以被 M7 成功加载并应用，主站与从站进入正常运行状态，CSV 模式下目标速度 <code>30000</code> 已经能让电机稳定低速连续转动。实际反馈也能对应起来，例如编码器持续变化，实际速度接近目标速度，这说明 XML 解析出来的 profile 确实参与了最终控制。</p>
+          <p>YAKO 的意义，不只是“这个驱动器能跑”，更重要的是它证明了当前工程具备这条能力：A53 解析 XML，M7 根据 profile 做 PDO 对齐，并用统一的实时循环把电机带起来。这条路线在后面继续扩展更多驱动器时仍然很有价值，因为它保留了更高的灵活性和统一性。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">第四阶段</p>
+          <h2>步科适配让问题变得更真实</h2>
+          <p>步科驱动器的接入过程，比 YAKO 更能说明真实工程里“同一个框架不一定对应同一条接入路径”。从 XML 解析本身看，步科并没有问题，Vendor、Product、Revision 都可以正常识别。真正的问题出在 PDO remap 这一层。</p>
+          <p>步科当前上电后，默认 PDO 已经能够正常进入 OP，过程数据字节数实测为 <code>ob=7 ib=13</code>。如果只按照 default PDO layout 去适配，电机是可以稳定转起来的。但当链路尝试进一步按 XML / profile 去重写 PDO 映射时，问题就开始收敛到一个非常清晰的点：多种 remap 方式，包括裁剪版、完整 PDO 版、单 TxPDO 版，以及先加载 profile 再重启总线的方式，最终都失败在同一个位置：</p>
+          <div class="article-chain">
+            <code>0x1C13:00</code>
+          </div>
+          <p>这说明步科当前这台驱动器，在这套主站实现和当前运行时机下，并不接受这条 TxPDO assign remap 路线。这一步带来的价值很大，因为它让一个重要判断第一次变得非常清楚：XML 可以解析成功，不等于驱动器一定支持在线 PDO 重映射。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">差异结论</p>
+          <h2>两条接入策略是怎么形成的</h2>
+          <p>做到这里，工程已经不适合再坚持“所有驱动器统一按 remap 跑”。更实际的策略，是把 XML 解析能力和驱动器接入策略分开。现在这套工程已经形成了两条明确路径。</p>
+          <ul class="article-list">
+            <li>YAKO：<code>XML -&gt; profile -&gt; remap -&gt; 运行</code></li>
+            <li>步科：<code>XML -&gt; profile -&gt; default PDO layout -&gt; 运行</code></li>
+          </ul>
+          <p>适用于像 YAKO 这样能够接受 profile 重映射的驱动器时，XML 解析出来的 PDO 配置会真正写入驱动器对象字典，让驱动器 PDO 结构向目标 profile 对齐。适用于像步科这样默认 PDO 已经可用、但当前不适合在线 remap 的驱动器时，XML 解析结果仍然有价值，只是用途从“强行改驱动器”变成了“指导 M7 如何理解和适配现有过程数据布局”。</p>
+          <p>如果把这套原则压缩成一句话，就是：能 remap，就按 XML / profile 重新映射驱动器 PDO；不能 remap，就保留驱动器默认 PDO，用 default PDO layout 适配当前驱动器 PDO。这不是妥协，而是当前工程阶段最真实、最稳定的接入策略。</p>
+        </article>
+
+        <article class="panel-card article-section">
+          <p class="card-kicker">最终经验</p>
+          <h2>这次工作最值得留下的，是一套更清楚的收敛方法</h2>
+          <p>这次工作最值得留下的，不只是某一个 XML 解析器或某一份 profile 文件，而是对复杂控制链如何收敛的理解更具体了一些。单驱能稳定转动，才有资格讨论后面的驱动器适配；XML 解析是基础能力，但它和 PDO remap 能力不是一回事；驱动器是否支持 remap，必须靠实机链路验证，不能只看 XML 文件内容。</p>
+          <p>更重要的是，当前工程已经具备继续往前走的基础。A53 解析、RPMsg 下发、M7 profile 接收、YAKO remap、步科 default PDO layout 这几层都已经有了真实验证结果。回头看，这次工作的核心价值已经不只是“完成了一次单驱 EtherCAT 调试”，而是把一套后续可以继续扩展的接入逻辑立住了。</p>
+          <p>当前最有意义的结论，不是某个驱动器终于跑了，而是这套工程已经不再只会处理一个样本，而是开始具备处理“不同驱动器，不同接入路径”的能力。</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>独立文章持续整理中</p>
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="blog.html">归档</a>
+        <a href="mailto:1277426628@qq.com">邮箱</a>
+        <a href="https://blog.csdn.net/TNT_JQR?type=blog" target="_blank" rel="noreferrer">CSDN</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
