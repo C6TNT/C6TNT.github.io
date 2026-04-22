@@ -313,6 +313,23 @@ body.blog-page .archive-shell {
   line-height: 1.75;
 }
 
+.hero-quiet-entry {
+  margin: 14px 0 0;
+  font-size: 0.96rem;
+  line-height: 1.75;
+}
+
+.hero-quiet-entry a {
+  color: var(--success);
+  border-bottom: 1px solid rgba(141, 255, 181, 0.28);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-quiet-entry a:hover {
+  color: var(--primary);
+  border-color: rgba(98, 243, 255, 0.5);
+}
+
 .hero-important-link {
   max-width: 640px;
   margin-top: 20px;
@@ -1491,6 +1508,76 @@ body.essay-page .essay-point p {
   font-weight: 700;
 }
 
+body.plain-article-page {
+  color: #2c3840;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(215, 228, 235, 0.55), transparent 26%),
+    linear-gradient(180deg, #f7f3ee 0%, #f1ebe3 100%);
+}
+
+body.plain-article-page .grid-backdrop {
+  background-image:
+    linear-gradient(rgba(61, 84, 99, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 84, 99, 0.035) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at center, black 72%, transparent 98%);
+}
+
+.plain-article-shell {
+  width: min(100% - 36px, 980px);
+  margin: 0 auto;
+  padding: 28px 0 72px;
+}
+
+.plain-article-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: clamp(52px, 8vw, 92px);
+}
+
+body.plain-article-page .brand {
+  color: #7a5f48;
+}
+
+body.plain-article-page .topbar-link {
+  color: #6d7b83;
+}
+
+.plain-article {
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+
+.plain-article time {
+  display: block;
+  margin-bottom: 18px;
+  color: #7b8a92;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+
+.plain-article h1 {
+  margin: 0 0 clamp(34px, 5vw, 56px);
+  color: #23333d;
+  font-size: clamp(2rem, 5.4vw, 4rem);
+  line-height: 1.28;
+  letter-spacing: -0.03em;
+}
+
+.plain-article-body p {
+  margin: 0 0 1.55em;
+  color: #435661;
+  font-size: clamp(1.02rem, 1.8vw, 1.14rem);
+  line-height: 2.05;
+  text-align: justify;
+}
+
+.plain-article-body p:last-child {
+  margin-bottom: 0;
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -1534,6 +1621,20 @@ body.essay-page .essay-point p {
 @media (max-width: 760px) {
   .site-shell {
     width: min(100% - 18px, 1180px);
+  }
+
+  .plain-article-shell {
+    width: min(100% - 24px, 980px);
+    padding-top: 20px;
+  }
+
+  .plain-article-topbar {
+    margin-bottom: 44px;
+  }
+
+  .plain-article-body p {
+    text-align: left;
+    line-height: 1.95;
   }
 
   .topbar,
