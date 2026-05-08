@@ -1584,6 +1584,42 @@ body.plain-article-page .topbar-link {
   letter-spacing: -0.02em;
 }
 
+.playlist-list {
+  display: grid;
+  gap: 18px;
+  margin: 34px 0 42px;
+  padding: 0;
+  list-style: none;
+}
+
+.playlist-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 18px;
+  padding: 0 0 18px;
+  border-bottom: 1px solid rgba(122, 95, 72, 0.12);
+}
+
+.playlist-index {
+  color: #8b6b50;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+
+.plain-article-body .playlist-song {
+  margin-bottom: 0.45em;
+  color: #263743;
+  font-weight: 700;
+}
+
+.plain-article-body .playlist-note {
+  margin-bottom: 0;
+  color: #5c6e77;
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
 .plain-article-body p:last-child {
   margin-bottom: 0;
 }
@@ -1645,6 +1681,11 @@ body.plain-article-page .topbar-link {
   .plain-article-body p {
     text-align: left;
     line-height: 1.95;
+  }
+
+  .playlist-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 
   .topbar,
