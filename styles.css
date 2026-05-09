@@ -463,6 +463,15 @@ body.blog-page .archive-shell {
   gap: 16px;
 }
 
+.archive-shell-simple {
+  display: block;
+}
+
+.archive-shell-simple .archive-column {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+}
+
 .stats-strip {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
